@@ -1,0 +1,56 @@
+### Environment
+@baseUrl = http://localhost/pet/index.php
+@json = application/json
+
+### List all animals
+GET {{baseUrl}}/animals
+Accept: {{json}}
+
+###
+
+### Show single animal by ID (router очекува ?id=)
+GET {{baseUrl}}/animals/show?id=1
+Accept: {{json}}
+
+###
+
+### Create new animal
+POST {{baseUrl}}/animals
+Content-Type: {{json}}
+Accept: {{json}}
+
+{
+  "name": "Rex",
+  "species": "dog",
+  "age": 3
+}
+
+###
+
+### Update animal (PUT заменува сите полиња)
+PUT {{baseUrl}}/animals?id=1
+Content-Type: {{json}}
+Accept: {{json}}
+
+{
+  "name": "Rex",
+  "species": "dog",
+  "age": 4
+}
+
+###
+
+### Partial update (PATCH менува само дадени полиња)
+PATCH {{baseUrl}}/animals?id=1
+Content-Type: {{json}}
+Accept: {{json}}
+
+{
+  "age": 5
+}
+
+###
+
+### Delete animal
+DELETE {{baseUrl}}/animals?id=1
+Accept: {{json}}

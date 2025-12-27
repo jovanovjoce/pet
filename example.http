@@ -1,15 +1,15 @@
 ### Environment
-@baseUrl = http://localhost/pet/index.php
+@baseUrl = http://localhost/pet/public/
 @json = application/json
 
 ### Health check
-GET {{baseUrl}}/records/animals
+GET {{baseUrl}}animals
 Accept: {{json}}
 
 ###
 
 ### List all animals (with pagination)
-GET {{baseUrl}}/records/animals?limit=10&offset=0
+GET {{baseUrl}}/animals?limit=1&offset=0
 Accept: {{json}}
 
 ###
@@ -27,14 +27,14 @@ Accept: {{json}}
 ###
 
 ### Create a new animal
-POST {{baseUrl}}/records/animals
+POST {{baseUrl}}/animals
 Content-Type: {{json}}
 Accept: {{json}}
 
 {
   "name": "Rex",
   "species": "dog",
-  "age": 3
+  "age": 300
 }
 
 ###
