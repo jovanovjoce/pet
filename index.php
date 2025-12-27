@@ -1,1 +1,2 @@
-<?php echo 'Welcome to pet'; ?>
+<?php
+    echo 'test';

@@ -1,0 +1,94 @@
+### Environment
+@baseUrl = http://localhost/pet/index.php
+@json = application/json
+
+### Health check
+GET {{baseUrl}}/records/animals
+Accept: {{json}}
+
+###
+
+### List all animals (with pagination)
+GET {{baseUrl}}/records/animals?limit=10&offset=0
+Accept: {{json}}
+
+###
+
+### Filter animals by species
+GET {{baseUrl}}/records/animals?filter=species,eq,dog&order=created_at,desc
+Accept: {{json}}
+
+###
+
+### Retrieve single animal by ID
+GET {{baseUrl}}/records/animals/1
+Accept: {{json}}
+
+###
+
+### Create a new animal
+POST {{baseUrl}}/records/animals
+Content-Type: {{json}}
+Accept: {{json}}
+
+{
+  "name": "Rex",
+  "species": "dog",
+  "age": 3
+}
+
+###
+
+### Batch insert animals
+POST {{baseUrl}}/records/animals
+Content-Type: {{json}}
+Accept: {{json}}
+
+[
+  { "name": "Mila", "species": "cat", "age": 2 },
+  { "name": "Barko", "species": "dog", "age": 5 }
+]
+
+###
+
+### Update an animal (PUT replaces all fields)
+PUT {{baseUrl}}/records/animals/1
+Content-Type: {{json}}
+Accept: {{json}}
+
+{
+  "name": "Rex",
+  "species": "dog",
+  "age": 4
+}
+
+###
+
+### Partial update (PATCH only changes provided fields)
+PATCH {{baseUrl}}/records/animals/1
+Content-Type: {{json}}
+Accept: {{json}}
+
+{
+  "age": 5
+}
+
+###
+
+### Delete an animal
+DELETE {{baseUrl}}/records/animals/1
+Accept: {{json}}
+
+###
+
+### Aggregations (count, avg, etc.)
+GET {{baseUrl}}/records/animals?aggregate=count:id,avg:age&groupBy=species
+Accept: {{json}}
+
+###
+
+### OPTIONS preflight (CORS check)
+OPTIONS {{baseUrl}}/records/animals
+Origin: http://localhost:3000
+Access-Control-Request-Method: GET
+Access-Control-Request-Headers: Content-Type
